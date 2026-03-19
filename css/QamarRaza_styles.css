@@ -61,45 +61,46 @@ section{
     font-weight:550;
 }
 
-/* #education-table{
-    border: 2px solid rgb(5, 13, 43);
-    border-radius: 5px;
-    box-shadow: 2px 2px 10px 1px black;
-    padding: 2px 2px 2px 2px;
-    border-color: collapse;
-} */
 .edu-table {
     border: 2px solid rgb(5, 13, 43);
     border-collapse: collapse;
     width: 100%;
 }
-
 .edu-table th,
 .edu-table td {
     border: 1px solid rgb(5, 13, 43);
     padding: 12px;
 }
-
 .edu-table th {
     text-align: center;
 }
-
 .edu-table tr:nth-child(odd) {
     background-color: #f2f2f2;
 }
+
+.projects-li{
+    margin-bottom: 15px;
+}
+.projects-li2{
+    margin-bottom: 5px;
+    color:  #0f766e ;
+}
+#projects a{
+    text-decoration: none;
+    box-shadow: 1px 1x 15px 15px black;
+}
+#projects a:hover{
+    position: relative;
+    margin: 0px 0px 0px 5px;
+
+    transition: 1s;
+    color: rgb(255, 0, 136);
+    font-weight: 700;
+    font-size:medium;
+}
+
+
 /*
-
-4.7 Projects Section Styling 
-The system shall: 
-● Add spacing between projects 
-● Style project links 
-● Add hover color effects 
-Mandatory CSS Concepts: 
-● margin-bottom 
-● color
-● transition 
-● :hover 
-
 4.8 Contact Form Styling 
 The system shall: 
 ● Align labels properly 
