@@ -3,6 +3,112 @@
     margin: auto;
     padding: 5px;
     box-sizing: border-box;
-    background-color: rgb(128, 60, 60);
+    background-color: white(128, 60, 60);
     color: #333333;
 }
+
+#header{
+    padding-top: 5px;
+    text-align: center;
+    background: linear-gradient(135deg, #0a192f, #112240);
+    color: #ffffff;
+}
+
+#header-image{
+    border-radius: 20px;
+    border: 3px solid black;
+    width:270px; 
+    height:300px;
+}
+
+
+
+
+
+
+
+
+/* 
+4.3 Navigation Styling 
+The system shall: 
+● Display navigation horizontally 
+● Remove default list styling
+●  Add hover effects 
+● Highlight active links 
+Mandatory CSS Concepts: 
+● display: flex 
+● list-style: none 
+● text-decoration: none 
+● :hover pseudo-class 
+● padding 
+
+4.4 Section Styling 
+The system shall: 
+● Add spacing between sections 
+● Use consistent section layout 
+● Add subtle borders or shadows 
+Mandatory CSS Concepts: 
+● margin 
+● padding
+● border 
+● box-shadow 
+
+4.5 Skills Section Styling 
+The system shall: 
+● Use spacing between list items 
+● Optionally use columns for skills 
+● Differentiate technical & soft skills visually 
+Mandatory CSS Concepts: 
+● line-height 
+● column-count (optional) 
+● font-weight 
+
+4.6 Education Table Styling 
+The system shall: 
+● Add borders to table
+● Apply alternate row coloring 
+● Center table headers 
+● Add padding inside cells 
+Mandatory CSS Concepts: 
+● border 
+● border-collapse 
+● padding 
+● nth-child selector 
+
+4.7 Projects Section Styling 
+The system shall: 
+● Add spacing between projects 
+● Style project links 
+● Add hover color effects 
+Mandatory CSS Concepts: 
+● margin-bottom 
+● color
+● transition 
+● :hover 
+
+4.8 Contact Form Styling 
+The system shall: 
+● Align labels properly 
+● Style input fields uniformly 
+● Add spacing between form fields 
+● Style submit button 
+Mandatory CSS Concepts: 
+● display: block 
+● width 
+● padding 
+● border-radius 
+● cursor: pointer
+
+4.9 Footer Styling 
+The system shall: 
+● Center footer content 
+● Apply background color 
+● Reduce font size 
+● Add spacing 
+Mandatory CSS Concepts: 
+● text-align 
+● background-color 
+● font-size 
+● padding 
+
+*/
