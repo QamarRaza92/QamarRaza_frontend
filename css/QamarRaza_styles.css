@@ -1,0 +1,8 @@
+#main{
+    font-family: sans-serif;
+    margin: auto;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: rgb(128, 60, 60);
+    color: #333333;
+}
