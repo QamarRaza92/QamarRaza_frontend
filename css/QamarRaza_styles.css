@@ -51,7 +51,7 @@ section{
     margin: 10px 0px 0px 0px;
     padding: 5x;
     padding-left: 5px;
-    border: 1px solid black;
+    border: 2px solid rgb(5, 13, 43);
     box-shadow: 2px 2px 10px 1px black;
     border-radius: 5px;
 }
@@ -60,18 +60,34 @@ section{
     line-height: 1.5;
     font-weight:550;
 }
+
+/* #education-table{
+    border: 2px solid rgb(5, 13, 43);
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px 1px black;
+    padding: 2px 2px 2px 2px;
+    border-color: collapse;
+} */
+.edu-table {
+    border: 2px solid rgb(5, 13, 43);
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.edu-table th,
+.edu-table td {
+    border: 1px solid rgb(5, 13, 43);
+    padding: 12px;
+}
+
+.edu-table th {
+    text-align: center;
+}
+
+.edu-table tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
 /*
-4.6 Education Table Styling 
-The system shall: 
-● Add borders to table
-● Apply alternate row coloring 
-● Center table headers 
-● Add padding inside cells 
-Mandatory CSS Concepts: 
-● border 
-● border-collapse 
-● padding 
-● nth-child selector 
 
 4.7 Projects Section Styling 
 The system shall: 
