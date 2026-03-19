@@ -47,30 +47,20 @@
 }
 .navigation a{text-decoration: none;}
 
+section{
+    margin: 10px 0px 0px 0px;
+    padding: 5x;
+    padding-left: 5px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 10px 1px black;
+    border-radius: 5px;
+}
 
-
-/* 
-4.4 Section Styling 
-The system shall: 
-● Add spacing between sections 
-● Use consistent section layout 
-● Add subtle borders or shadows 
-Mandatory CSS Concepts: 
-● margin 
-● padding
-● border 
-● box-shadow 
-
-4.5 Skills Section Styling 
-The system shall: 
-● Use spacing between list items 
-● Optionally use columns for skills 
-● Differentiate technical & soft skills visually 
-Mandatory CSS Concepts: 
-● line-height 
-● column-count (optional) 
-● font-weight 
-
+#skills li{
+    line-height: 1.5;
+    font-weight:550;
+}
+/*
 4.6 Education Table Styling 
 The system shall: 
 ● Add borders to table
