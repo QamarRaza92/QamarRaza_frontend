@@ -63,7 +63,6 @@ const students = [
 
 function total_marks(array)
 {
-    let student_total = [null,null,null,null,null]
     for(let i=0;i<array.length;i++)
     {
         let sum=0;
@@ -71,10 +70,8 @@ function total_marks(array)
         {
             sum = sum+array[i]['marks'][j]['score']
         }
-        student_total[i] = sum
         console.log(array[i]["name"]+" Total Marks: "+sum)
     }
-    return student_total
 }
 // total_marks(students)
 
@@ -122,7 +119,16 @@ function subject_wise_highest_total(array) {
 //Create function to find class topper
 function find_topper(array)
 {
-    student_total = total_marks(students)
+    let student_total = [null,null,null,null,null]
+    for(let i=0;i<array.length;i++)
+    {
+        let sum=0;
+        for(let j=0;j<array[i]["marks"].length;j++)
+        {
+            sum = sum+array[i]['marks'][j]['score']
+        }
+        student_total[i] = sum
+    }
     //For identifying topper
     let topper = -1;
     let index = 0
