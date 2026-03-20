@@ -82,7 +82,7 @@ function student_average(array)
             sum = sum+array[i]['marks'][j]['score']
         }
         try {
-            console.log(array[i]["name"]+" Average Marks: "+sum/no_of_sub)
+            console.log(array[i]["name"]+" Average: "+sum/no_of_sub)
         } catch (error) {
             console.log("No subject")
         }
@@ -91,7 +91,7 @@ function student_average(array)
 // student_average(students)
 
 
-function subject_wise_highest_total(array) {
+function subject_wise_highest_score(array) {
     let no_of_sub = array[0].marks.length;
 
     for (let i = 0; i < no_of_sub; i++) {
@@ -108,8 +108,25 @@ function subject_wise_highest_total(array) {
         console.log("Highest in " + subjectName + ": " + array[index].name + " (" + highest + ")");
     }
 }
-// subject_wise_highest_total(students)
+// subject_wise_highest_score(students)
 
+function subject_wise_average_score(array) {
+    let no_of_subjects = array[0].marks.length;
+    let no_of_students = array.length;
+
+    for (let i = 0; i < no_of_subjects; i++) {
+        let subjectSum = 0;
+        let subjectName = array[0].marks[i].subject;
+
+        for (let j = 0; j < no_of_students; j++) {
+            subjectSum += array[j].marks[i].score;
+        }
+
+        let avg = subjectSum / no_of_students;
+        console.log("Average " + subjectName + " Score: " + avg.toFixed(2));
+    }
+}
+// subject_wise_average_score(students);
 
 function find_topper(array)
 {
@@ -138,22 +155,46 @@ function find_topper(array)
 }
 // find_topper(students)
 
+function assign_grade(array) {
+    for (let i = 0; i < array.length; i++) {
+        let student = array[i];
 
-function subject_wise_average_score(array) {
-    let no_of_subjects = array[0].marks.length;
-    let no_of_students = array.length;
-
-    for (let i = 0; i < no_of_subjects; i++) {
-        let subjectSum = 0;
-        let subjectName = array[0].marks[i].subject;
-
-        for (let j = 0; j < no_of_students; j++) {
-            subjectSum += array[j].marks[i].score;
+        // 1. Attendance Check (Pehle hi bahar nikal jao)
+        if (student.attendance < 75) {
+            console.log(student.name + " Grade: Fail (Low Attendance)");
+            continue; // Agle student par jao
         }
 
-        let avg = subjectSum / no_of_students;
-        console.log("Average " + subjectName + " Score: " + avg.toFixed(2));
+        let sum = 0;
+        let hasFailedInSubject = false; 
+        let failedSubject = "";
+
+        // 2. Subject Score Check
+        for (let j = 0; j < student.marks.length; j++) {
+            if (student.marks[j].score <= 40) {
+                hasFailedInSubject = true;
+                failedSubject = student.marks[j].subject;
+                break; 
+            }
+            sum += student.marks[j].score;
+        }
+
+        // 3. Final Decision
+        if (hasFailedInSubject) {
+            console.log(student.name + " Grade: Fail (Failed in " + failedSubject + ")");
+        } else {
+            const avg = sum / student.marks.length;
+            
+            if (avg >= 85) {
+                console.log(student.name + " Grade: A");
+            } else if (avg >= 70) {
+                console.log(student.name + " Grade: B");
+            } else if (avg >= 50) {
+                console.log(student.name + " Grade: C");
+            } else {
+                console.log(student.name + " Grade: Fail");
+            }
+        }
     }
 }
-
-subject_wise_average_score(students);
+assign_grade(students)
