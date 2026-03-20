@@ -68,7 +68,9 @@ function total_marks(array)
         console.log(array[i]["name"]+" Total Marks: "+sum)
     }
 }
-// total_marks(students)
+console.log("--- Total Marks By Each Student ---");
+total_marks(students);
+console.log("--------------------");
 
 
 function student_average(array)
@@ -88,7 +90,9 @@ function student_average(array)
         }
     }
 }
-// student_average(students)
+console.log("---Average Marks for Each Student---");
+student_average(students)
+console.log("--------------------");
 
 
 function subject_wise_highest_score(array) {
@@ -108,7 +112,10 @@ function subject_wise_highest_score(array) {
         console.log("Highest in " + subjectName + ": " + array[index].name + " (" + highest + ")");
     }
 }
-// subject_wise_highest_score(students)
+console.log("---Subject Wise Highest Score---");
+subject_wise_highest_score(students)
+console.log("--------------------");
+
 
 function subject_wise_average_score(array) {
     let no_of_subjects = array[0].marks.length;
@@ -126,7 +133,10 @@ function subject_wise_average_score(array) {
         console.log("Average " + subjectName + " Score: " + avg.toFixed(2));
     }
 }
-// subject_wise_average_score(students);
+console.log("---Subject Wise Average Score---");
+subject_wise_average_score(students);
+console.log("--------------------");
+
 
 function find_topper(array)
 {
@@ -143,7 +153,7 @@ function find_topper(array)
     //For identifying topper
     let topper = -1;
     let index = 0
-    for(i=0;i<student_total.length;i++)
+    for(let i=0;i<student_total.length;i++)
     {
         if(topper<student_total[i])
         {
@@ -153,7 +163,10 @@ function find_topper(array)
     }
     console.log("Class Topper: "+array[index].name+" with "+topper+" marks")
 }
-// find_topper(students)
+console.log("---Finding Topper---");
+find_topper(students)
+console.log("--------------------");
+
 
 function assign_grade(array) {
     for (let i = 0; i < array.length; i++) {
@@ -197,4 +210,6 @@ function assign_grade(array) {
         }
     }
 }
+console.log("---Assign Grade---");
 assign_grade(students)
+console.log("--------------------");
