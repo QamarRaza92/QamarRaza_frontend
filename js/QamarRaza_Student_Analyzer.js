@@ -63,15 +63,34 @@ const students = [
 
 function total_marks(array)
 {
-    for(i=0;i<array.length;i++)
+    for(let i=0;i<array.length;i++)
     {
-        sum=0;
-        for(j=0;j<array[i]["marks"].length;j++)
+        let sum=0;
+        for(let j=0;j<array[i]["marks"].length;j++)
         {
             sum = sum+array[i]['marks'][j]['score']
         }
         console.log(array[i]["name"]+" Total Marks: "+sum)
     }
 }
-
 total_marks(students)
+
+
+function student_average(array)
+{
+    for(let i=0;i<array.length;i++)
+    {
+        const no_of_sub = array[i]["marks"].length;
+        let sum=0;
+        for(let j=0;j<no_of_sub;j++)
+        {
+            sum = sum+array[i]['marks'][j]['score']
+        }
+        try {
+            console.log(array[i]["name"]+" Average Marks: "+sum/no_of_sub)
+        } catch (error) {
+            console.log("No subject")
+        }
+    }
+}
+student_average(students)
