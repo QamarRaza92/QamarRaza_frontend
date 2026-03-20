@@ -9,7 +9,6 @@ const students = [
       { subject: "Computer", score: 79 }
     ],
     attendance: 95 
-    // Case: Top performer (Grade A)
   },
   {
     name: "Rishika Sharma",
@@ -21,19 +20,17 @@ const students = [
       { subject: "Computer", score: 56 }
     ],
     attendance: 80 
-    // Case: Low average (Grade C)
   },
   {
     name: "Gopal Verma",
     marks: [
       { subject: "Math", score: 85 },
       { subject: "English", score: 80 },
-      { subject: "Science", score: 35 }, // Fail in subject
+      { subject: "Science", score: 35 }, 
       { subject: "History", score: 98 },
       { subject: "Computer", score: 75 }
     ],
     attendance: 88 
-    // Case: Fail (Failed in Science)
   },
   {
     name: "Affan Khan",
@@ -45,7 +42,6 @@ const students = [
       { subject: "Computer", score: 80 }
     ],
     attendance: 65 
-    // Case: Fail (Low Attendance)
   },
   {
     name: "Aafab Sheikh",
@@ -57,7 +53,6 @@ const students = [
       { subject: "Computer", score: 65 }
     ],
     attendance: 78 
-    // Case: Average performer (Grade C)
   }
 ];
 
@@ -116,7 +111,6 @@ function subject_wise_highest_total(array) {
 // subject_wise_highest_total(students)
 
 
-//Create function to find class topper
 function find_topper(array)
 {
     let student_total = [null,null,null,null,null]
@@ -142,4 +136,24 @@ function find_topper(array)
     }
     console.log("Class Topper: "+array[index].name+" with "+topper+" marks")
 }
-find_topper(students)
+// find_topper(students)
+
+
+function subject_wise_average_score(array) {
+    let no_of_subjects = array[0].marks.length;
+    let no_of_students = array.length;
+
+    for (let i = 0; i < no_of_subjects; i++) {
+        let subjectSum = 0;
+        let subjectName = array[0].marks[i].subject;
+
+        for (let j = 0; j < no_of_students; j++) {
+            subjectSum += array[j].marks[i].score;
+        }
+
+        let avg = subjectSum / no_of_students;
+        console.log("Average " + subjectName + " Score: " + avg.toFixed(2));
+    }
+}
+
+subject_wise_average_score(students);
