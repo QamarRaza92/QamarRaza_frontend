@@ -76,7 +76,7 @@ function total_marks(array)
     }
     return student_total
 }
-total_marks(students)
+// total_marks(students)
 
 
 function student_average(array)
@@ -119,7 +119,7 @@ function subject_wise_highest_total(array) {
 // subject_wise_highest_total(students)
 
 
-
+//Create function to find class topper
 function find_topper(array)
 {
     student_total = total_marks(students)
