@@ -53,16 +53,15 @@ async function startDashboard() {
         // Fake API call ko wait karo
         const data = await fetchProducts();
         
-        // ---- YAHAN TUMHARI PROBLEM FIX HOGI ----
         // Data aane ke baad loading screen ko hatao aur Grid ko dikhao
         loadingMessage.classList.add('hidden');
         productGrid.classList.remove('hidden');
 
-        // Check karne ke liye console log
         console.log("Products successfully loaded!", data);
         
-        renderProducts(data);
-        // updateAnalytics();
+        // --- FINAL FIX YAHAN HAI ---
+        applyAllFilters(); // Ye apne aap products render kar dega
+        updateAnalytics(); // Ye boxes mein 0 ki jagah actual values daal dega
 
     } catch (error) {
         console.error("Data fetch karne mein problem aayi:", error);
