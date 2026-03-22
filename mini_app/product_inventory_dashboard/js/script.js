@@ -112,34 +112,73 @@ function renderProducts(productsArray) {
     });
 }
 
-// --- Filtering Logic (Search & Category) ---
+// --- Filtering & Sorting Logic ---
 
-// Elements ko pakadna
 const searchInput = document.getElementById('searchInput');
 const categoryFilter = document.getElementById('categoryFilter');
+// Naye elements target kar rahe hain
+const lowStockBtn = document.getElementById('lowStockBtn');
+const sortDropdown = document.getElementById('sortDropdown');
 
-// Jab bhi user kuch type kare ya dropdown change kare, ye function chalega
+// Low stock filter ka ek switch (Flag) bana liya
+let isLowStockOnly = false;
+
+// Event listeners lagana
 searchInput.addEventListener('input', applyAllFilters);
 categoryFilter.addEventListener('change', applyAllFilters);
+sortDropdown.addEventListener('change', applyAllFilters);
 
-// Master filter function jo saari conditions ek saath check karega
+// Button click hone par state toggle karo aur filter chalao
+lowStockBtn.addEventListener('click', () => {
+    isLowStockOnly = !isLowStockOnly; // True ko false, false ko true kar dega
+    
+    // UI update: Button lal ya wapas normal karne ke liye CSS class add/remove
+    if (isLowStockOnly) {
+        lowStockBtn.classList.add('active');
+    } else {
+        lowStockBtn.classList.remove('active');
+    }
+    
+    applyAllFilters();
+});
+
+// Master function jo filter aur sort dono handle karega
 function applyAllFilters() {
-    // User ne jo type kiya use lowercase mein badal do taaki case-insensitive search ho sake
     const searchText = searchInput.value.toLowerCase();
     const selectedCategory = categoryFilter.value;
+    const sortValue = sortDropdown.value;
 
-    // Filter array method use kar rahe hain
-    const filteredProducts = inventory.filter(item => {
-        // 1. Search Condition: Kya item ka naam typed text se match karta hai?
+    // 1. FILTERING
+    let processedProducts = inventory.filter(item => {
         const matchName = item.name.toLowerCase().includes(searchText);
-        
-        // 2. Category Condition: Agar 'all' select kiya hai toh sab dikhao, warna sirf match wale dikhao
         const matchCategory = (selectedCategory === 'all') || (item.category === selectedCategory);
         
-        // Dono shartein poori honi chahiye tabhi product dikhega
-        return matchName && matchCategory;
+        // Agar button ON hai, toh stock < 5 check karo, warna sabko pass hone do (true)
+        const matchStock = isLowStockOnly ? (item.stock < 5) : true;
+        
+        return matchName && matchCategory && matchStock;
     });
 
-    // Bachi hui list ko wapas render karne ke liye bhej do
-    renderProducts(filteredProducts);
+    // 2. SORTING
+    // Array ka .sort() method use karke order change kar rahe hain
+    switch (sortValue) {
+        case 'price-asc':
+            processedProducts.sort((a, b) => a.price - b.price); // Kam se zyada
+            break;
+        case 'price-desc':
+            processedProducts.sort((a, b) => b.price - a.price); // Zyada se kam
+            break;
+        case 'name-asc':
+            processedProducts.sort((a, b) => a.name.localeCompare(b.name)); // A se Z
+            break;
+        case 'name-desc':
+            processedProducts.sort((a, b) => b.name.localeCompare(a.name)); // Z se A
+            break;
+        default:
+            // Default mein kuch nai karna, original order chalne do
+            break;
+    }
+
+    // Filter aur Sort hone ke baad jo final list bachi, usko UI par bhej do
+    renderProducts(processedProducts);
 }
