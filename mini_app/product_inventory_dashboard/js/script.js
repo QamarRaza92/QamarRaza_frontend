@@ -34,3 +34,42 @@ function initData() {
 function saveToLocalStorage() {
     localStorage.setItem('inventoryData', JSON.stringify(inventory));
 }
+
+// --- Async API Simulation ---
+function fetchProducts() {
+    return new Promise((resolve) => {
+        // 1.5 seconds ka fake server delay create kar rahe hain
+        setTimeout(() => {
+            resolve(inventory);
+        }, 1500);
+    });
+}
+
+// --- App Initialization ---
+async function startDashboard() {
+    initData(); // Pehle localStorage se data uthao
+
+    try {
+        // Fake API call ko wait karo
+        const data = await fetchProducts();
+        
+        // ---- YAHAN TUMHARI PROBLEM FIX HOGI ----
+        // Data aane ke baad loading screen ko hatao aur Grid ko dikhao
+        loadingMessage.classList.add('hidden');
+        productGrid.classList.remove('hidden');
+
+        // Check karne ke liye console log
+        console.log("Products successfully loaded!", data);
+        
+        // TODO: Render Products and Update Analytics (Agle steps mein)
+        // renderProducts(data);
+        // updateAnalytics();
+
+    } catch (error) {
+        console.error("Data fetch karne mein problem aayi:", error);
+        loadingMessage.innerHTML = "<p style='color: red;'>Failed to load products.</p>";
+    }
+}
+
+// Jab browser poori tarah HTML load kar le, tab dashboard start karo
+document.addEventListener('DOMContentLoaded', startDashboard);
