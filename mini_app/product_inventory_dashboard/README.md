@@ -33,46 +33,46 @@ It's easy to run as no server setup is required.
 The Snapshots of working apps are here
 
 1. The Main View
-![Dashboard Layout](./screenshots/dashboard_main.png)
+![Dashboard Layout](./all_screenshots/dashboard_main.png)
 > The first view of the site when it loads.
 
 2. Using the Filters
-![Using Filter](./screenshots/using_filter.png)
+![Using Filter](./all_screenshots/using_filter.png)
 > Here I clicked the Low Stock filter and sorted the items by price. The grid updates immediately.
 
 3. The "Add Product" Form
-![Add Product Form](./screenshots/add_product_form.png)
+![Add Product Form](./all_screenshots/add_product_form.png)
 > This is the form at the bottom. It checks for wrong inputs before adding the item to the list.
 
 4. Adding new product demo
-![Adding New Product](./screenshots/adding_new_product.png)
+![Adding New Product](./all_screenshots/adding_new_product.png)
 In this screenshot, i used the functionality to add a new product
 
 5. Deleting Product Option
-![Deleting Product](./screenshots/deleting_product_option.png)
+![Deleting Product](./all_screenshots/deleting_product_option.png)
 Here i have shown the option through which we can delete any product
 
 6. Different sorting filters
-![Sorting Filters](./screenshots/different_sorting_filters.png)
+![Sorting Filters](./all_screenshots/different_sorting_filters.png)
 I applied different sorting filters here
 
 7. Different category Filters
-![Categoty Filters](./screenshots/different_category_filters.png)
+![Categoty Filters](./all_screenshots/different_category_filters.png)
 This screenshots shows the different types of categories which are available such as electronics, accesories etc.
 
 8. Local Storage
-![Local Storage](./screenshots/local_storage.png)
+![Local Storage](./all_screenshots/local_storage.png)
 Also a local storage screenshot has been added there to view the local storage
 
 9. Using Multiple Filters
-![Multiple Filters](./screenshots/multiple_filters.png)
+![Multiple Filters](./all_screenshots/multiple_filters.png)
 In this screenshot, i applied many filters toghether, being more precise i chose category="electronics", stock="less than 5" and
 soting="Alphabetically A-Z"
 
 10. Pop up message
-![Success Message](./screenshots/successful_message.png)
+![Success Message](./all_screenshots/successful_message.png)
 This is a pop up message screenshot which is popped up when a new product has been added successfully
 
 11. Workinng of searchbar
-![Searchbar Working](./screenshots/searchbar_working.png)
+![Searchbar Working](./all_screenshots/searchbar_working.png)
 Here i am using the searchbar to search a product
