@@ -204,3 +204,61 @@ function updateAnalytics() {
     document.getElementById('totalInventoryValue').textContent = `₹${totalValue.toLocaleString('en-IN')}`;
     document.getElementById('outOfStockCount').textContent = outOfStock;
 }
+
+// --- Product Management (Add & Delete) ---
+
+// Delete Product Function
+function deleteProduct(productId) {
+    // Confirm box ek achhi practice hai taaki galti se click hone par seedha delete na ho
+    if(confirm("Are you sure you want to delete this product?")) {
+        // Filter karke us ID wale product ko bahar nikal do
+        inventory = inventory.filter(item => item.id !== productId);
+        
+        // Data save karo aur poori UI ko refresh maar do
+        saveToLocalStorage();
+        applyAllFilters(); 
+        updateAnalytics();
+    }
+}
+
+// Add New Product Function
+const addProductForm = document.getElementById('addProductForm');
+
+addProductForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Default page refresh ko roko
+
+    // Form se values nikalna aur extra spaces hatana (.trim)
+    const nameInput = document.getElementById('prodName').value.trim();
+    const priceInput = parseFloat(document.getElementById('prodPrice').value);
+    const stockInput = parseInt(document.getElementById('prodStock').value);
+    const categoryInput = document.getElementById('prodCategory').value;
+
+    // Extra Validation check
+    if (!nameInput || priceInput <= 0 || stockInput < 0 || !categoryInput) {
+        alert("Please check your inputs! Price must be > 0 and stock cannot be negative.");
+        return;
+    }
+
+    // Naya product object banana
+    const newProduct = {
+        id: Date.now(), // Unique ID banane ke liye
+        name: nameInput,
+        price: priceInput,
+        stock: stockInput,
+        category: categoryInput
+    };
+
+    // Main array mein naya product daal do
+    inventory.push(newProduct);
+    
+    // Storage, UI aur Analytics sab update kar do
+    saveToLocalStorage();
+    applyAllFilters();
+    updateAnalytics();
+
+    // Form ko wapas blank kar do agle use ke liye
+    addProductForm.reset();
+    
+    // User ko bata do ki kaam ho gaya
+    alert(`${nameInput} added successfully to the inventory!`);
+});
