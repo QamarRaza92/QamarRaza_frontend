@@ -182,3 +182,25 @@ function applyAllFilters() {
     // Filter aur Sort hone ke baad jo final list bachi, usko UI par bhej do
     renderProducts(processedProducts);
 }
+
+
+// --- Analytics Dashboard Logic ---
+
+function updateAnalytics() {
+    // 1. Total Products
+    const totalProducts = inventory.length;
+    
+    // 2. Total Value (Reduce method se Price * Stock ko jodd rahe hain)
+    const totalValue = inventory.reduce((sum, item) => {
+        return sum + (item.price * item.stock);
+    }, 0);
+
+    // 3. Out of Stock (Filter karke check kar rahe hain kitne 0 stock wale hain)
+    const outOfStock = inventory.filter(item => item.stock === 0).length;
+
+    // UI ko update karna
+    document.getElementById('totalProductsCount').textContent = totalProducts;
+    // .toLocaleString() se number thoda sundar dikhega (e.g. 50,000)
+    document.getElementById('totalInventoryValue').textContent = `₹${totalValue.toLocaleString('en-IN')}`;
+    document.getElementById('outOfStockCount').textContent = outOfStock;
+}
