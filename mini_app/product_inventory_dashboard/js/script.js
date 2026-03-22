@@ -61,8 +61,7 @@ async function startDashboard() {
         // Check karne ke liye console log
         console.log("Products successfully loaded!", data);
         
-        // TODO: Render Products and Update Analytics (Agle steps mein)
-        // renderProducts(data);
+        renderProducts(data);
         // updateAnalytics();
 
     } catch (error) {
@@ -71,5 +70,44 @@ async function startDashboard() {
     }
 }
 
-// Jab browser poori tarah HTML load kar le, tab dashboard start karo
 document.addEventListener('DOMContentLoaded', startDashboard);
+
+
+// Ye function array ko HTML cards mein convert karke screen par dikhayega
+function renderProducts(productsArray) {
+    // Sabse pehle grid ko khali karo, to avoid duplicating purana data
+    productGrid.innerHTML = '';
+
+    // Agar array khali hai (jaise filter karne par kuch na mile), toh message dikhao
+    if (productsArray.length === 0) {
+        productGrid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 20px; color: #7f8c8d;">
+                <h3>No products found!</h3>
+                <p>Try adjusting your search or filters.</p>
+            </div>
+        `;
+        return; 
+    }
+
+    // Array ke har item par loop chala kar card DOM element banao
+    productsArray.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+
+        // Card ka andar ka HTML structure (Template literals use karke variables inject kiye hain)
+        card.innerHTML = `
+            <h3>${product.name}</h3>
+            <span class="category-badge">${product.category.toUpperCase()}</span>
+            <p><strong>Price:</strong> ₹${product.price}</p>
+            <p><strong>Stock:</strong> 
+                <span style="color: ${product.stock < 5 ? 'red' : 'green'}; font-weight: bold;">
+                    ${product.stock} units
+                </span>
+            </p>
+            <button class="delete-btn" onclick="deleteProduct(${product.id})">Delete</button>
+        `;
+
+        // Tayyar card ko main product grid mein jod do
+        productGrid.appendChild(card);
+    });
+}
