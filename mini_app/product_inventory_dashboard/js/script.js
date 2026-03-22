@@ -111,3 +111,35 @@ function renderProducts(productsArray) {
         productGrid.appendChild(card);
     });
 }
+
+// --- Filtering Logic (Search & Category) ---
+
+// Elements ko pakadna
+const searchInput = document.getElementById('searchInput');
+const categoryFilter = document.getElementById('categoryFilter');
+
+// Jab bhi user kuch type kare ya dropdown change kare, ye function chalega
+searchInput.addEventListener('input', applyAllFilters);
+categoryFilter.addEventListener('change', applyAllFilters);
+
+// Master filter function jo saari conditions ek saath check karega
+function applyAllFilters() {
+    // User ne jo type kiya use lowercase mein badal do taaki case-insensitive search ho sake
+    const searchText = searchInput.value.toLowerCase();
+    const selectedCategory = categoryFilter.value;
+
+    // Filter array method use kar rahe hain
+    const filteredProducts = inventory.filter(item => {
+        // 1. Search Condition: Kya item ka naam typed text se match karta hai?
+        const matchName = item.name.toLowerCase().includes(searchText);
+        
+        // 2. Category Condition: Agar 'all' select kiya hai toh sab dikhao, warna sirf match wale dikhao
+        const matchCategory = (selectedCategory === 'all') || (item.category === selectedCategory);
+        
+        // Dono shartein poori honi chahiye tabhi product dikhega
+        return matchName && matchCategory;
+    });
+
+    // Bachi hui list ko wapas render karne ke liye bhej do
+    renderProducts(filteredProducts);
+}
