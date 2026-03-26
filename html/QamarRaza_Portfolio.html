@@ -130,13 +130,16 @@
             <tr>
               <td>M.Tech</td>
               <td>IIT Delhi</td> 
-              <td>2026</td> 
+              <td>2026</td>
+              <!-- Rowspan="2" would merge the grade cell for the master and the bachelor degree 
+                   coz they share same A+ result-->
               <td rowspan="2">A+</td>
             </tr>
             <tr>
               <td>B.Tech</td>
               <td>Medicaps University</td> 
               <td>2024</td> 
+              <!-- This cell value is covered by the rowspan declared above -->
             </tr>
             <tr>
               <td>12th</td>
@@ -197,7 +200,7 @@
     <!-- Includes name, email, age, date/time, gender, country, message -->
       <section id="contact">
         <h2>Contact Me</h2>
-        <form action="" target="_parent">
+        <form action="#" target="_parent">
             <fieldset>
                 <legend>Contact Me</legend>
                 <label for="name">Name:</label> <input type="text" placeholder="Enter your name" id="name" required > <br><br>
